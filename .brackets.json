@@ -1,0 +1,31 @@
+{
+    "sass.enabled": false,
+    "path": {
+        "scss/*.scss": {
+            "sass.enabled": true,
+            "sass.options": {
+                "includePaths": [
+                    "../../bootstrap-sass-3.3.7/assets/stylesheets/",
+                    "../../bootstrap-sass-3.3.7/assets/javascripts/",
+                    "../../bootstrap-sass-3.3.7/assets/images/",
+                    "../../bootstrap-sass-3.3.7/bootstrap-sass-3.3.7/assets/fonts/",
+                    "../../govuk_frontend_toolkit-master/govuk_frontend_toolkit-master/stylesheets/",
+                    "../../govuk_elements-master/govuk_elements-master/public/sass",
+                    "../../govuk_template-master/govuk_template-master/source/assets/stylesheets/"
+                ],
+                "outputDir": "../css",
+                "outputStyle": "nested",
+                "sourceComments": false
+            },
+            "linting.collapsed": false,
+            "themes.theme": "dark-theme",
+            "beautify.io.on_save": true,
+            "me.drewh.jsbeautify.on_save": true,
+            "fonts.fontSize": "16px",
+            "showLineNumbers": false,
+            "useTabChar": false,
+            "brackets-git.gitPath": "git",
+            "livedev.multibrowser": true
+        }
+    }
+}

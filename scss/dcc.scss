@@ -1,0 +1,436 @@
+// GOVUK_FRONTEND_TOOLKIT colours,mixins
+@import 'colours/palette';
+@import 'design-patterns/buttons';
+@import 'css3';
+@import 'fonts';
+@import 'font_stack';
+$font-size-base: 19px;
+// Colours from govuk palette matched to bootstap variables
+$text-color:$black;
+$text-muted: #6b6565; // bootstrap's default fails accessibility contrast
+$link-color: $link-colour;
+$link-hover-color: $link-hover-colour;
+$state-danger-border: $red;
+$state-danger-text:$red;
+$state-danger-bg:$white;
+$state-success-bg: $white;
+$state-success-border:$green;
+$state-success-text:$green;
+$state-info-bg: $white;
+$state-info-text:$black;
+$state-info-border: $border-colour;
+$state-warning-text: #c94800;
+$state-warning-border: #c94800;
+$state-warning-bg: $white;
+$input-border: $black;
+$input-border-focus:$yellow;
+$navbar-inverse-link-color:$white;
+$breadcrumb-bg: $white;
+$navbar-inverse-bg: $black;
+$navbar-inverse-brand-hover-color: yellow;
+$navbar-inverse-link-hover-color:lightgrey; //$grey-4;
+$breadcrumb-separator: ">";
+// Square borders
+$border-radius-base: 0;
+$border-radius-large:0;
+$border-radius-small:0;
+// Fonts from GDS to Bootstrap
+$font-family-base: $nta-light;
+// BOOTSTRAP SASS
+@import 'bootstrap';
+.row-v-padding {
+    margin: 15px 0
+}
+
+// alteration to bootstrap
+a {
+    .nav &,
+    &.btn {
+        text-decoration: none;
+    }
+    &:focus {
+        background-color: $focus-colour;
+        outline: 3px solid $focus-colour;
+    }
+    text-decoration: underline;
+    // bootstrap sets this to none.
+    // set back to default behaviour 'underline'
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    &:focus {
+        outline: 3px solid $focus-colour;
+        color: white;
+    }
+}
+
+header {
+    margin-bottom: 15px;
+    #applicationTitle {
+        color: black;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 6px;
+        @media screen and (min-width: 768px) {
+            font-size: 24px;
+        }
+    }
+    .navbar {
+        img {
+            float: left;
+            margin-right: 15px;
+        }
+        margin-bottom: 0;
+        color: white;
+        // dorset for you bigger navbar to fix larger image.
+        &.dfy {
+            height: 85px;
+            border-bottom: lightblue solid 2px;
+            a {
+                color: black;
+                text-decoration: none
+            }
+        }
+    }
+}
+
+.navbar-brand {
+    padding: 7.5px 5px;
+}
+
+
+/** Basic footer. Can be better  **/
+
+.footer {
+    padding: 15px;
+    margin-top: 15px;
+    background-color: #dee0e2;
+    text-align: center;
+}
+
+
+/************************************************************************
+ BUTTONS **/
+
+.btn {
+    &:focus {
+        outline: 3px solid $focus-colour;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    &.btn-green {
+        background-color: $green;
+        color: white;
+        @include box-shadow(0 2px 0 darken($green, 15%));
+        &:hover,
+        &:focus {
+            background-color: darken($green, 5%);
+        }
+        &:focus {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+    }
+}
+
+// Replicate GDS example use of large colour notification, using variation of bootstrap jumbotron component.
+.jumbotron-turquoise {
+    background-color: $turquoise;
+    color: white;
+}
+
+.loader {
+    display: none;
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    border-top: 18px solid darkgreen;
+    border-bottom: 8px solid darkgreen;
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+a svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -142px;
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+.site-footer,
+.page-wrap:after {
+    height: 220px;
+}
+
+.site-footer {
+    position: relative;
+    padding: 20px;
+    background: black;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#questionLabel {
+    font-size: 24px;
+    width: 200px;
+    text-decoration: underline;
+}
+
+#questionContainer {
+    width: 97%;
+    height: 100%;
+    margin: auto;
+    padding: 5px;
+    position: relative;
+    #questionText {
+        font-family: kelper;
+        font-style: italic;
+        letter-spacing: 2px;
+        width: 100%;
+        padding: 5px;
+        font-size: 44px;
+        font-weight: bolder;
+    }
+    #answerArea {
+        display: block;
+        position: relative;
+        width: 95%;
+        height: 100px;
+        border: dashed 2px black;
+        // display: flex;
+        //align-items: center;
+        -webkit-animation: wrongAnswer 1s;
+        -webkit-animation-play-state: paused;
+        -webkit-animation-iteration-count: infinite;
+        animation: wrongAnswer 1s;
+        animation-play-state: paused;
+        animation-iteration-count: infinite;
+        color: white;
+        text-align: center;
+        font-size: 64px;
+        .answer-option {
+            position: absolute;
+            color: white;
+            text-align: center;
+            font-size: 64px;
+            letter-spacing: 2px;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#627d4d+36,1f3b08+69 */
+            background: #627d4d;
+            /* Old browsers */
+            background: -moz-linear-gradient(left, #627d4d 36%, #1f3b08 69%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(left, #627d4d 36%, #1f3b08 69%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to right, #627d4d 36%, #1f3b08 69%);
+            animation: correctAnswer 1s;
+            animation-play-state: paused;
+            -webkit-animation: correctAnswer 1s;
+            -webkit-animation-play-state: paused;
+        }
+    }
+    #instructionsText {
+        width: 95%;
+        text-align: center;
+        font-family: kelper;
+        font-weight: bolder;
+    }
+    #answerOptionsContainer {
+        width: 600px;
+        max-width: 100%;
+        padding: 10px;
+        height: 150px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        .answer-option {
+            border: 1px solid black;
+            border-radius: 5%;
+            width: 200px;
+            max-width: 30%;
+            height: 60px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            padding: 10px;
+            color: black;
+            &:hover {
+                cursor: pointer;
+                background-color: lightcyan;
+                box-shadow: 10px 10px 5px #888888;
+            }
+        }
+    }
+    #answerInfo {
+        font-size: 32px;
+        display: none;
+        line-height: 1;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+    }
+    #nextQuestionBtn {
+        display: none;
+    }
+}
+
+#endQuizMessage {
+    display: none;
+}
+
+@keyframes correctAnswer {
+    0% {
+        width: 5px;
+        height: 5px;
+        margin-left: 50%;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        margin-left: 0;
+    }
+}
+
+@-webkit-keyframes correctAnswer {
+    0% {
+        width: 5px;
+        height: 5px;
+        margin-left: 50%;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        margin-left: 0;
+    }
+}
+
+@keyframes wrongAnswer {
+    0% {
+        background-color: white;
+    }
+    50% {
+        background-color: red;
+    }
+    100% {
+        background-color: white;
+    }
+}
+
+@-webkit-keyframes wrongAnswer {
+    0% {
+        background-color: white;
+    }
+    50% {
+        background-color: red;
+    }
+    100% {
+        background-color: white;
+    }
+}
+
+@media screen and (max-width: 699px) {
+    #questionContainer {
+        #questionText {
+            font-size: 24px;
+        }
+        #answerInfoText {
+            font-size: 22px;
+        }
+    }
+    header {
+        margin-bottom: 3px;
+        .navbar.dfy {
+            height: 65px;
+        }
+    }
+    h2 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 32px;
+    }
+    h1 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 36px;
+    }
+    #askdorsetimage {
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    #questionContainer {
+        apdding: 0;
+        height: 100%;
+        #answerInfoText {
+            font-size: 14px;
+        }
+        #questionText {
+            font-size: 18px;
+            padding: 5px;
+        }
+        #instructionsText {
+            font-size: 12px;
+        }
+        #answerOptionsContainer {
+            .answer-option {
+                width: 40%;
+                font-size: 16px;
+            }
+        }
+        #answerArea {
+            font-size: 36px;
+            height: 50px;
+            .answer-option {
+                font-size: 36px;
+            }
+        }
+    }
+    #questionLabel {
+        font-size: 20px;
+        padding: 4px;
+    }
+}
+
+
+/*@import 'table-checkbox';*/

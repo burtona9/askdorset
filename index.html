@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/dcc.css">
+    <script src="js/quiz.min.js"></script>
+    <script src="js/DragDropTouch.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar dfy">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html"><img id="askdorsetimage" alt="Ask Dorset logo" src="img/askdorset.png"> <span id="applicationTitle"></span></a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Care homes quiz</h1>
+        <div id="questionLabel">Question <span id="qnum"></span></div>
+        <div id="questionContainer">
+            <div id="questionText"></div>
+            <div id="answerArea" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="instructionsText">Drag the answer you think it is to the box above.</div>
+            <div id="answerOptionsContainer"> </div>
+            <div id="answerInfo">
+                <h2>Correct!</h2><span id="answerInfoText"></span></div>
+            <button class="btn btn-primary center" id="nextQuestionBtn" onclick="finishedQuestion()">Next Question</button>
+        </div>
+        <div id="endQuizMessage">
+            <h1>Thank you for playing</h1> <a class="btn btn-green" href="?">Play again</a> </div>
+    </div>
+</body>
+
+</html>
