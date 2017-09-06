@@ -1,31 +1,37 @@
-var questions, currentQuestion;
-var currentQuestionNumber;
-var questionCount;
-var answer_area_div;
-var answer_option_container;
-var answer_info_div;
-var answer_info_text_span;
-var question_text_div;
-var next_question_button;
-var current_qustion_num_span;
-var question_container_div;
-var end_quiz_message_div;
-var instruction_text_div;
+/* ASK DORSET QUIZ /*
+/* Author Adam Burton */
+/* Non minified copy, lots of space for readability and neatness */
+
+// Dom node elements declared here for use outside of 'DOMContentLoaded' event listener
+var questions, currentQuestion,
+    currentQuestionNumber,
+    questionCount,
+    answer_area_div,
+    answer_option_container,
+    answer_info_div,
+    answer_info_text_span,
+    question_text_div,
+    next_question_button,
+    current_qustion_num_span,
+    question_container_div,
+    end_quiz_message_div,
+    instruction_text_div;
 
 // Intial quiz set up
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Get references to page elements for manipulation during quiz
-    question_container_div      = document.getElementById("questionContainer");
-    answer_area_div             = document.getElementById("answerArea");
-    answer_option_container     = document.getElementById("answerOptionsContainer")
-    answer_info_div             = document.getElementById("answerInfo");
-    answer_info_text_span       = document.getElementById("answerInfoText");
-    question_text_div           = document.getElementById("questionText");
-    next_question_button        = document.getElementById("nextQuestionBtn");
-    current_qustion_num_span    = document.getElementById("qnum");
-    end_quiz_message_div        = document.getElementById("endQuizMessage");
-    instructions_text_div       = document.getElementById("instructionsText");
+    var elements = document.querySelectorAll("#questionContainer, #answerArea, #answerOptionsContainer, #answerInfo, #answerInfoText, #questionText, #nextQuestionBtn, #qnum, #endQuizMessage, #instructionsText");
+
+    question_container_div      = elements[1];
+    answer_area_div             = elements[3];
+    answer_option_container     = elements[5];
+    answer_info_div             = elements[6];
+    answer_info_text_span       = elements[7];
+    question_text_div           = elements[2];
+    next_question_button        = elements[8];
+    current_qustion_num_span    = elements[0];
+    end_quiz_message_div        = elements[9];
+    instructions_text_div       = elements[4];
 
     // Get the questions with callback function to start quiz
     loadJSON(function (response) {
@@ -51,9 +57,6 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 };
 
-function allowDrop(ev) {
-    ev.preventDefault();
-};
 
 function drop(ev) {
     ev.preventDefault();
